@@ -12,7 +12,7 @@ let roads = {
         for (let i = 0; i < data.features.length; i++) {
           if (
             data.features[i].properties.PT_PHASE ===
-            "Construction underway or begins soon" && data.features[i].properties.DISTRICT_NAME === "Austin" && data.features[i].properties.NBR_LET_YEAR === 2021 && data.features[i].properties.NBR_LET_MONTH === 12 && data.features[i].properties.HIGHWAY_NUMBER !== "VA" && data.features[i].properties.HIGHWAY_NUMBER !== "CR"
+            "Construction underway or begins soon" && data.features[i].properties.DISTRICT_NAME === "Austin" && data.features[i].properties.NBR_LET_YEAR === 2020 && data.features[i].properties.NBR_LET_MONTH === 12 && data.features[i].properties.HIGHWAY_NUMBER !== "VA" && data.features[i].properties.HIGHWAY_NUMBER !== "CR"
           ) {
             
             let anchor = document.createElement("a")
