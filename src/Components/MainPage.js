@@ -11,7 +11,10 @@ function MainPage(){
         <h1> Welcome to the Website</h1>
         <button> Click Here </button>
         </div>
-        
+        <div></div>
+        <div>
+    
+    </div>
         
         </>
     )
