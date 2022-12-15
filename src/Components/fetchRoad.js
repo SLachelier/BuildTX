@@ -59,16 +59,46 @@ export default function fetchRoad() {
           function breakLine () {
             (newDiv.appendChild(document.createElement('br')))
           } 
+          
           function anchorMan () {
             var newAnchor = document.createElement('a')
+
+            var url = "https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/"+el.NBR_LET_YEAR+"/0"+el.NBR_LET_MONTH+"%20"+Let_Month+"/01%20Plans/"+el.COUNTY_NAME+"%20"+elements+".pdf";
+
+            
+
             newAnchor.text = "PDF"
             newAnchor.target = "_blank"
 
-            newAnchor.href = "https://www.google.com/search?q=add+a+breakline+in+react+map+function&rlz=1C1CHBF_enUS812US812&oq=add+a+breakline&aqs=chrome.1.69i57j35i39j0i22i30j0i10i22i30j0i22i30j0i10i22i30l3j0i22i30.10375j1j4&sourceid=chrome&ie=UTF-8"
+            
+
+
+            
+            newAnchor.href = url
             newDiv.appendChild(newAnchor)
     
             
           } 
+          // https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/2021/01%20January/01%20Plans/Bastrop%200573-01-040.pdf
+
+          // https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/2021/01%20January/01%20Plans/Williamson%200914-05-193.pdf
+
+          
+
+          const test = el.CONTROL_SECT_JOB.split("");
+          test.splice(4,0,"-")
+          test.splice(7,0,"-");
+          
+          
+          const elements= test.join('')
+
+          
+          
+          let Let_Month = "January"
+
+            // if(el.NBR_LET_MONTH=== 1){
+            //   Let_Month = "January"
+            // }
 
 
           breakLine()

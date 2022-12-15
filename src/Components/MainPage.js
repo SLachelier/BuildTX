@@ -1,5 +1,6 @@
 import React from "react";
 import '../Styles/MainPage.css'
+import fetchRoad from "./fetchRoad";
 
 
 function MainPage(){
@@ -9,7 +10,8 @@ function MainPage(){
         <>
         <div className="mainPage">
         <h1> Welcome to the Website</h1>
-        <button> Click Here </button>
+        
+        <button onClick={fetchRoad}>Click Here</button>
         </div>
         <div></div>
         <div>

@@ -1,12 +1,12 @@
 import React from "react";
-import fetchRoad from "./fetchRoad";
+// import fetchRoad from "./fetchRoad";
 
 
 // var numbers = [...Array(100).keys()];
 
 
 // console.log(this.fetchRoad())
-fetchRoad();
+// fetchRoad();
 
 
 
