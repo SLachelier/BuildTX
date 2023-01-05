@@ -71,10 +71,6 @@ export default function fetchRoad(year) {
           
           let Let_Month = "January"
 
-            // if(el.NBR_LET_MONTH=== 1){
-            //   Let_Month = "January"
-            // }
-
 
           breakLine()
           newDiv.append("CONTROL_SECT_JOB: "+ el.CONTROL_SECT_JOB)
@@ -88,16 +84,7 @@ export default function fetchRoad(year) {
           newDiv.append("NBR_LET_MONTH: "+ el.NBR_LET_MONTH)
           breakLine()
           anchorMan();
-          // newDiv.append("PDF "+ anchorMan())
-
-
-
-          // breakLine()
-          // breakLine()
-
-          
-          
-         
+     
           document.querySelector(".january").append(newDiv);
 
           return jan;
