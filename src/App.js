@@ -5,6 +5,8 @@ import MainPage from './Components/MainPage'
 import DropDown from './Components/DropDown';
 import Months from './Components/Months';
 import DataFetching from './Components/DataFetching';
+// import Test from './Components/test2';
+
 
 function App() {
   
@@ -16,6 +18,7 @@ function App() {
      <MainPage></MainPage>
      <Months></Months>
      <DataFetching></DataFetching>
+     {/* <Test></Test> */}
 
     </div>
   );
