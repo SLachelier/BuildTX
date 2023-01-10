@@ -2,9 +2,9 @@ import Navbar from './Components/Navbar';
 
 // import fetchRoad from './Components/fetchRoad';
 
-
+import JobFetch from './Components/JobFetch';
 import Months from './Components/Months';
-import DataFetching from './Components/DataFetching';
+// import DataFetching from './Components/DistrictFetch';
 // import Test from './Components/test';
 
 
@@ -17,7 +17,8 @@ function App() {
      
      
      <Months></Months>
-     <DataFetching></DataFetching>
+     <JobFetch></JobFetch>
+     {/* <DataFetching></DataFetching> */}
      {/* <Test></Test> */}
 
     </div>
