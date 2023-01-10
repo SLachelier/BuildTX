@@ -3,7 +3,7 @@ import axios from "axios";
 
 // 'https://jsonplaceholder.typicode.com/posts'
 
-function DistrictFetch() {
+function FetchDistrict() {
   const [posts, setPosts] = useState([]);
   const [Year, setYear] = useState();
   const [Month, setMonth] = useState();
@@ -213,4 +213,4 @@ function DistrictFetch() {
   );
 }
 
-export default DistrictFetch;
+export default FetchDistrict;
