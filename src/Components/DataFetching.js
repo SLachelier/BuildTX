@@ -5,11 +5,9 @@ import axios from "axios";
 
 function DataFetching() {
   const [posts, setPosts] = useState([]);
-  const [Year,setYear]=useState("Year")
-  const [Month,setMonth]=useState("Month")
-
-  
-  const [District,setDistrict]=useState("District")
+  const [Year, setYear] = useState();
+  const [Month, setMonth] = useState();
+  const [District, setDistrict] = useState();
   // const [idFromButtonClick,setIdFromButtonClick]=useState(1)
 
   // let Year = 2021;
@@ -19,14 +17,13 @@ function DataFetching() {
 
   useEffect(() => {
     const jobs = [];
-    
-    
+
     axios
       .get(
         `https://services.arcgis.com/KTcxiTD9dsQw4r7Z/ArcGIS/rest/services/TxDOT_Projects/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelWithin&resultType=none&distance=0.0&units=esriSRUnit_Foot&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token=&CONTROL_SECT_JOB=Bastrop`
       )
       .then((res) => {
-        console.log(Year)
+        console.log(Year);
         for (let i = 0; i < res.data.features.length; i++) {
           if (
             res.data.features[i].properties.PT_PHASE ===
@@ -112,16 +109,79 @@ function DataFetching() {
   return (
     <div>
       <ul>
-      
-      <input type="number"  value={Year} onChange={e=>setYear(e.target.value)}></input>
-      <input type="text" value={District} onChange={e=>setDistrict(e.target.value)}></input>
-      <input type="number" value={Month} onChange={e=>setMonth(e.target.value)}></input>
+        <div>
+          <p>
+            District:
+            <input
+              list="districts"
+              value={District}
+              onChange={(e) => setDistrict(e.target.value)}
+              placeholder={"District Name "}
+            ></input>
+          </p>
 
-      {/* <input type="text" value={District} onChange={e=>setDistrict(e.target.value)}></input> */}
+          <p>
+            Month:
+            <input
+              list="months"
+              value={Month}
+              onChange={(e) => setMonth(e.target.value)}
+              placeholder={"Month"}
+            ></input>
+          </p>
+          <p>
+            Year:
+            <input
+              type="number"
+              value={Year}
+              onChange={(e) => setYear(e.target.value)}
+              placeholder={"2021"}
+            ></input>
+          </p>
 
-      
+          <datalist id="districts">
+            <option value="Abilene" />
+            <option value="Amarillo" />
+            <option value="Atlanta" />
+            <option value="Austin" />
+            <option value="Beaumont" />
+            <option value="Bryan" />
+            <option value="Childress" />
+            <option value="Corpus Christi" />
+            <option value="Dallas" />
+            <option value="El Paso" />
+            <option value="Fort Worth" />
+            <option value="Houston" />
+            <option value="Laredo" />
+            <option value="Lubbock" />
+            <option value="Lufkin" />
+            <option value="Odessa" />
+            <option value="Paris" />
+            <option value="Pharr" />
+            <option value="San Angelo" />
+            <option value="San Antonio" />
+            <option value="Tyler" />
+            <option value="Waco" />
+            <option value="Wichita Falls" />
+            <option value="Yoakum" />
+          </datalist>
+          <datalist id="months">
+            <option value="1" />
+            <option value="2" />
+            <option value="3" />
+            <option value="4" />
+            <option value="5" />
+            <option value="6" />
+            <option value="7" />
+            <option value="8" />
+            <option value="9" />
+            <option value="10" />
+            <option value="11" />
+            <option value="12" />
+          </datalist>
+        </div>
 
-
+        {/* <input type="text" value={District} onChange={e=>setDistrict(e.target.value)}></input> */}
 
         {posts.map((el) => (
           <div key={el.OBJECTID}>
