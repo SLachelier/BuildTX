@@ -15,10 +15,15 @@ function Navbar() {
     <>
       <IconContext.Provider value={{ color: "undefined" }}>
         <div className="navbar">
+        
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          <h1 className="title">BuildTX</h1>
+          <div></div>
         </div>
+
+        {/* pop up nav bar view */}
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
@@ -37,6 +42,7 @@ function Navbar() {
               );
             })}
           </ul>
+          
         </nav>
       </IconContext.Provider>
     </>
