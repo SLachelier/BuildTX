@@ -120,6 +120,13 @@ span {
   padding-bottom: 50px;
 }
 
+.innerHome{
+  
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
 
 .csj{
   /* outline is just here to see how big the div is, erase when satisfied */

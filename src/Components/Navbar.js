@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import * as GiIcons from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../App.css";
@@ -19,7 +20,7 @@ function Navbar() {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <h1 className="title">BuildTX</h1>
+          <h1 className="title">BuildTX<GiIcons.GiTexas/><></></h1>
           <div></div>
         </div>
 
