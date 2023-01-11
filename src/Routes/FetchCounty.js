@@ -103,9 +103,9 @@ function FetchCounty() {
   return (
     <div>
       <ul>
-        <div>
+        <div className="fetchCounty">
           <p>
-            District:
+            County:
             <input
               list="counties"
               value={County}

@@ -3,6 +3,7 @@ import React from "react";
 // import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import * as GiICons from "react-icons/gi";
 
 export const SidebarData = [
   {
@@ -14,19 +15,19 @@ export const SidebarData = [
   {
     title: "Search By CSJ",
     path: "/fetchJobs",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <GiICons.GiArchiveResearch />,
     cName: "nav-text",
   },
   {
     title: "Search By District",
     path: "/fetchDistrict",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <GiICons.GiArchiveResearch />,
     cName: "nav-text",
   },
   {
     title: "Search By County",
     path: "/fetchCounty",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <GiICons.GiArchiveResearch />,
     cName: "nav-text",
   },
   {
