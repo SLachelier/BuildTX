@@ -123,7 +123,7 @@ span {
 
 .csj{
   /* outline is just here to see how big the div is, erase when satisfied */
-  outline: solid black;
+  /* outline: solid black; */
   padding-bottom: 20px;
 }
 
