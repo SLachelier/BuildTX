@@ -4,7 +4,6 @@ import {
     createBrowserRouter,
     RouterProvider,
     Route,
-    Link,
     Outlet,
     createRoutesFromElements,
   } from "react-router-dom";
@@ -12,9 +11,9 @@ import Products from "./Routes/Products";
 import Home from "./Routes/Home";
 import Reports from "./Routes/Reports";
 import Navbar from "./Components/Navbar";
-import FetchJob from "./Components/FetchJob";
-import FetchDistrict from "./Components/FetchDistrict";
-import FetchCounty from "./Components/FetchCounty";
+import FetchJob from "./Routes/FetchJob";
+import FetchDistrict from "./Routes/FetchDistrict";
+import FetchCounty from "./Routes/FetchCounty";
 
 const AppLayout=()=>(
     <>

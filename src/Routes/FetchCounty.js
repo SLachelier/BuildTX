@@ -103,7 +103,7 @@ function FetchCounty() {
   return (
     <div>
       <ul>
-        <div>
+        <div className="home">
           <p>
             District:
             <input
