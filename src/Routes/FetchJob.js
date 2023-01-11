@@ -89,19 +89,20 @@ function FetchJob() {
   });
 
   return (
-    <div>
-      <ul>
-        <div>
+    <div className="fetched">
+      
+        <form className="inner">
           <h3>
             CSJ:
             <input
               list="months"
+              className="typeList"
               value={job}
               onChange={(e) => setJob(e.target.value)}
               placeholder={"CSJ Number"}
             ></input>
           </h3>
-        </div>
+        </form>
 
         {/* <input type="text" value={District} onChange={e=>setDistrict(e.target.value)}></input> */}
 
@@ -126,11 +127,10 @@ function FetchJob() {
               PDF
             </a>
 
-            <br></br>
-            <br></br>
+            
           </div>
         ))}
-      </ul>
+      
     </div>
   );
 }

@@ -8,7 +8,6 @@ function FetchCounty() {
   const [Year, setYear] = useState();
   const [County, setCounty] = useState();
 
-
   useEffect(() => {
     const jobs = [];
 
@@ -24,7 +23,6 @@ function FetchCounty() {
               "Construction underway or begins soon" &&
             res.data.features[i].properties.COUNTY_NAME === County &&
             res.data.features[i].properties.NBR_LET_YEAR === parseInt(Year) &&
-            
             res.data.features[i].properties.HIGHWAY_NUMBER !== "VA"
           ) {
             jobs.push(res.data.features[i].properties);
@@ -101,74 +99,68 @@ function FetchCounty() {
   }, [posts, County, Year]);
 
   return (
-    <div>
-      <ul>
-        <div className="fetchCounty">
-          <p>
-            County:
-            <input
-              list="counties"
-              value={County}
-              onChange={(e) => setCounty(e.target.value)}
-              placeholder={"County Name"}
-            ></input>
-          </p>
+    <div className="fetched">
+      <form className="inner">
+        <h3>
+          County:
+          <input
+          className="typeList"
+            list="counties"
+            value={County}
+            onChange={(e) => setCounty(e.target.value)}
+            placeholder={"County Name"}
+          ></input>
+        </h3>
 
-          <p>
-            Year:
-            <input
-              type="number"
-              value={Year}
-              onChange={(e) => setYear(e.target.value)}
-              placeholder={"2021"}
-            ></input>
-          </p>
+        <p>
+          Year:
+          <input
+          className="typeList"
+            type="number"
+            value={Year}
+            onChange={(e) => setYear(e.target.value)}
+            placeholder={"Year"}
+          ></input>
+        </p>
 
-          
-          <datalist id="months">
-            <option value="1" />
-            <option value="2" />
-            <option value="3" />
-            <option value="4" />
-            <option value="5" />
-            <option value="6" />
-            <option value="7" />
-            <option value="8" />
-            <option value="9" />
-            <option value="10" />
-            <option value="11" />
-            <option value="12" />
-          </datalist>
-        </div>
+        <datalist id="months">
+          <option value="1" />
+          <option value="2" />
+          <option value="3" />
+          <option value="4" />
+          <option value="5" />
+          <option value="6" />
+          <option value="7" />
+          <option value="8" />
+          <option value="9" />
+          <option value="10" />
+          <option value="11" />
+          <option value="12" />
+        </datalist>
+      </form>
 
-        {/* <input type="text" value={District} onChange={e=>setDistrict(e.target.value)}></input> */}
-
-        {posts.map((el) => (
-          <div key={el.OBJECTID}>
-            <div>CSJ: {el.CSJ} </div>
-            <div>DISTRICT NAME: {el.DISTRICT_NAME} </div>
-            <div>COUNTY NAME: {el.COUNTY_NAME} </div>
-            <div>LAYMAN DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
-            <div>TYPE OF WORK: {el.TYPE_OF_WORK} </div>
-            <div>PROJ CLASS: {el.PROJ_CLASS} </div>
-            <div>
-              Date of Construction: {el.Month}/{el.NBR_LET_YEAR}
-            </div>
-            <a
-              //   href="https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/${el.NBR_LET_YEAR}/01%20January/01%20Plans/Bastrop%200573-01-040.pdf"
-
-              href={`https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/${el.NBR_LET_YEAR}/0${el.NBR_LET_MONTH}%20${el.Month}/0${el.NBR_LET_MONTH}%20Plans/${el.COUNTY_NAME}%20${el.CSJ}.pdf`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              PDF
-            </a>
-
-            <br></br>
-            <br></br>
+      {posts.map((el) => (
+        <div div className="csj" key={el.OBJECTID}>
+          <div>CSJ: {el.CSJ} </div>
+          <div>DISTRICT NAME: {el.DISTRICT_NAME} </div>
+          <div>COUNTY NAME: {el.COUNTY_NAME} </div>
+          <div>LAYMAN DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
+          <div>TYPE OF WORK: {el.TYPE_OF_WORK} </div>
+          <div>PROJ CLASS: {el.PROJ_CLASS} </div>
+          <div>
+            Date of Construction: {el.Month}/{el.NBR_LET_YEAR}
           </div>
-        ))}
-      </ul>
+          <a
+            //   href="https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/${el.NBR_LET_YEAR}/01%20January/01%20Plans/Bastrop%200573-01-040.pdf"
+
+            href={`https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/${el.NBR_LET_YEAR}/0${el.NBR_LET_MONTH}%20${el.Month}/0${el.NBR_LET_MONTH}%20Plans/${el.COUNTY_NAME}%20${el.CSJ}.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PDF
+          </a>
+        </div>
+      ))}
     </div>
   );
 }
