@@ -4,7 +4,7 @@ function Reports (){
     return(
         <div className="reports">
          <h1>
-             Reports
+             Support
          </h1>
      </div> 
      )

@@ -7,9 +7,9 @@ import {
     Outlet,
     createRoutesFromElements,
   } from "react-router-dom";
-import Products from "./Routes/Products";
+import Team from "./Routes/Team";
 import Home from "./Routes/Home";
-import Reports from "./Routes/Reports";
+import Support from "./Routes/Support";
 import Navbar from "./Components/Navbar";
 import FetchJob from "./Routes/FetchJob";
 import FetchDistrict from "./Routes/FetchDistrict";
@@ -28,8 +28,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<AppLayout />}>
       <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/reports" element={<Reports />} />
+      <Route path="/team" element={<Team />} />
+      <Route path="/support" element={<Support />} />
       <Route path="/fetchJobs" element={<FetchJob />} />
       <Route path="/fetchDistrict" element={<FetchDistrict />} />
       <Route path="/fetchCounty" element={<FetchCounty />} />
