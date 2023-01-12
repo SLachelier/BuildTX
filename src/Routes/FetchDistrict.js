@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// 'https://jsonplaceholder.typicode.com/posts'
 
 function FetchDistrict() {
+  // lists out useState variables
   const [posts, setPosts] = useState([]);
   const [Year, setYear] = useState();
   const [Month, setMonth] = useState();
   const [District, setDistrict] = useState();
-  // const [idFromButtonClick,setIdFromButtonClick]=useState(1)
-
-  // let Year = 2021;
-  // let District = "Austin";
-
-  // let Month = 1;
+  
 
   useEffect(() => {
     const jobs = [];
 
+    // fetches from TxDOT database
     axios
       .get(
         `https://services.arcgis.com/KTcxiTD9dsQw4r7Z/ArcGIS/rest/services/TxDOT_Projects/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelWithin&resultType=none&distance=0.0&units=esriSRUnit_Foot&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token=&CONTROL_SECT_JOB=Bastrop`
       )
       .then((res) => {
-        console.log(Year);
+        // filters and pushes items into an empty array based off the year, county name, and phase condition.
+
         for (let i = 0; i < res.data.features.length; i++) {
           if (
             res.data.features[i].properties.PT_PHASE ===
@@ -33,16 +30,20 @@ function FetchDistrict() {
             res.data.features[i].properties.NBR_LET_MONTH === parseInt(Month) &&
             res.data.features[i].properties.HIGHWAY_NUMBER !== "VA"
           ) {
+            // pushes if condition into the empty array
             jobs.push(res.data.features[i].properties);
 
+            // adds dashes into the CSJ number, this is useful for creating the link
             const test =
               res.data.features[i].properties.CONTROL_SECT_JOB.split("");
             test.splice(4, 0, "-");
             test.splice(7, 0, "-");
 
             const elements = test.join("");
+            // adds the rewritten CSJ number as a new property into the object.
             res.data.features[i].properties.CSJ = elements;
 
+            // adds a "month in letters" as a propery into the object. Based off what the numerical month is it will add the appropiate written out month.
             switch (Month) {
               case "1":
                 res.data.features[i].properties.Month = "January";
@@ -99,6 +100,7 @@ function FetchDistrict() {
         }
 
         console.log(jobs);
+         // adds the newly filled out array into the useState variable
         setPosts(jobs);
       })
       .catch((err) => {
@@ -107,6 +109,8 @@ function FetchDistrict() {
   }, [posts, District, Month, Year]);
 
   return (
+
+    // html for the input
     <div className="fetched">
       <div>
         <form className="inner">
@@ -120,7 +124,7 @@ function FetchDistrict() {
               placeholder={"District Name "}
             ></input>
           </h3>
-
+          
           <h3>
             Month:
             <input
@@ -141,7 +145,7 @@ function FetchDistrict() {
               placeholder={"Year"}
             ></input>
           </h3>
-
+          {/* lists out all the districts in numbers */}
           <datalist id="districts">
             <option value="Abilene" />
             <option value="Amarillo" />
@@ -168,6 +172,7 @@ function FetchDistrict() {
             <option value="Wichita Falls" />
             <option value="Yoakum" />
           </datalist>
+          {/* lists out all the months in numbers */}
           <datalist id="months">
             <option value="1" />
             <option value="2" />
@@ -197,7 +202,6 @@ function FetchDistrict() {
             Date of Construction: {el.Month}/{el.NBR_LET_YEAR}
           </div>
           <a
-            //   href="https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/${el.NBR_LET_YEAR}/01%20January/01%20Plans/Bastrop%200573-01-040.pdf"
 
             href={`https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/${el.NBR_LET_YEAR}/0${el.NBR_LET_MONTH}%20${el.Month}/0${el.NBR_LET_MONTH}%20Plans/${el.COUNTY_NAME}%20${el.CSJ}.pdf`}
             target="_blank"

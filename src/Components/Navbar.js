@@ -14,6 +14,7 @@ function Navbar() {
 
   return (
     <>
+    {/* adds the side navbar and title to the navbar */}
       <IconContext.Provider value={{ color: "undefined" }}>
         <div className="navbar">
         
@@ -24,7 +25,7 @@ function Navbar() {
           <div></div>
         </div>
 
-        {/* pop up nav bar view */}
+        {/* pop up nav bar view and pulls the objects from SidebarData component */}
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
