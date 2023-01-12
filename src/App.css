@@ -141,6 +141,7 @@ span {
   align-items: center;
   height: auto;
   font-size: 50px;
+  text-decoration: none;
 }
 
 .team{

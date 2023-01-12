@@ -1,12 +1,4 @@
-// import Navbar from './Components/Navbar';
-
-// import fetchRoad from './Components/fetchRoad';
-
-// import FetchJob from './Components/FetchJob';
-// import Months from './Components/Months';
-// import FetchCounty from './Components/FetchCounty';
-// import FetchDistrict from './Components/FetchDistrict';
-// import Test from './Components/test';
+// Currently a useless file, but is being kept on as an archived file in case the index file changes again.
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";

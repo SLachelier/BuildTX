@@ -20,7 +20,7 @@ function Navbar() {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <h1 className="title">BuildTX<GiIcons.GiTexas/><></></h1>
+          <a className="title" href="/">BuildTX<GiIcons.GiTexas/><></></a>
           <div></div>
         </div>
 
