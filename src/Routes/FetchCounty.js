@@ -112,7 +112,7 @@ function FetchCounty() {
           ></input>
         </h3>
 
-        <p>
+        <h3>
           Year:
           <input
           className="typeList"
@@ -121,7 +121,7 @@ function FetchCounty() {
             onChange={(e) => setYear(e.target.value)}
             placeholder={"Year"}
           ></input>
-        </p>
+        </h3>
 
         <datalist id="months">
           <option value="1" />
