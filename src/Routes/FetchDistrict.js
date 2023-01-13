@@ -113,7 +113,7 @@ function FetchDistrict() {
     // html for the input
     <div className="fetched">
       <div>
-        <form className="inner">
+        <form className="inner-dist">
           <h3>
             District:
             <input

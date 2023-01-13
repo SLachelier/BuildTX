@@ -2,7 +2,7 @@ import React from "react";
 
 function Home() {
   return (
-    <div className="fetched">
+    <div className="intro">
       <h2 className="innerHome">
         One of the more tedious but necessary tasks in transportation design is
         searching construction projects using the TxDOT website. While it works,

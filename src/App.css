@@ -19,6 +19,14 @@
   color: #fff;
 }
 
+.intro {
+  background-color: lightgrey;
+  margin: auto;
+  width: 65vw;
+  padding: 100px;
+  height: 100vh;
+}
+
 /* Navbar CSS */
 .navbar {
   background-color: navy;
@@ -95,17 +103,18 @@ span {
   margin-left: 16px;
 }
 
-.fetched{
+.fetched {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
   margin: auto;
-  width: 80%;
-  /* outline: solid black; */
+  width: 65%;
   padding-top: 50px;
   padding-bottom: 20px;
-  
+  background-color: lightgrey;
 }
 
 .typeList, select {
-  
   padding: 0.5rem 20px ;
   margin: 8px 0 8px 10px;
   display: inline-block;
@@ -118,10 +127,18 @@ span {
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 50px;
+  width: 100%;
+}
+
+.inner-dist {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
+  margin-left: 135px;
+  width: 100%;
 }
 
 .innerHome{
-  
   justify-content: center;
   align-items: center;
   padding-bottom: 50px;
@@ -131,7 +148,8 @@ span {
 .csj{
   /* outline is just here to see how big the div is, erase when satisfied */
   /* outline: solid black; */
-  padding-bottom: 20px;
+  padding: 25px 5px 10px 50px;
+  max-width: 300px;
 }
 
 .title{
