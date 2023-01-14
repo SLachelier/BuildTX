@@ -110,7 +110,7 @@ function FetchCounty() {
 
     // html for the input
     <div className="fetched">
-      <form className="inner">
+      <form className="inner-dist">
         <h3>
           County:
           <input
@@ -150,11 +150,11 @@ function FetchCounty() {
       </form>
 
       {posts.map((el) => (
-        <div div className="csj" key={el.OBJECTID}>
+        <div className="csj" key={el.OBJECTID}>
           <div>CSJ: {el.CSJ} </div>
           <div>DISTRICT NAME: {el.DISTRICT_NAME} </div>
           <div>COUNTY NAME: {el.COUNTY_NAME} </div>
-          <div>LAYMAN DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
+          <div>DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
           <div>TYPE OF WORK: {el.TYPE_OF_WORK} </div>
           <div>PROJ CLASS: {el.PROJ_CLASS} </div>
           <div>

@@ -96,7 +96,7 @@ function FetchJob() {
 
   return (
     <div className="fetched">
-      <form className="inner">
+      <form className="inner-dist">
         <h3>
           CSJ:
           <input
@@ -104,7 +104,7 @@ function FetchJob() {
             className="typeList"
             value={job}
             onChange={(e) => setJob(e.target.value)}
-            placeholder={"CSJ Number"}
+            placeholder={"Enter CSJ Without Dashes"}
           ></input>
         </h3>
       </form>
@@ -112,11 +112,11 @@ function FetchJob() {
       {/* <input type="text" value={District} onChange={e=>setDistrict(e.target.value)}></input> */}
 
       {posts.map((el) => (
-        <div key={el.OBJECTID}>
+        <div className="csj" key={el.OBJECTID}>
           <div>CSJ: {el.CSJ} </div>
           <div>DISTRICT NAME: {el.DISTRICT_NAME} </div>
           <div>COUNTY NAME: {el.COUNTY_NAME} </div>
-          <div>LAYMAN DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
+          <div>DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
           <div>TYPE OF WORK: {el.TYPE_OF_WORK} </div>
           <div>PROJ CLASS: {el.PROJ_CLASS} </div>
           <div>

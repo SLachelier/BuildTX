@@ -195,7 +195,7 @@ function FetchDistrict() {
           <div>CSJ: {el.CSJ} </div>
           <div>DISTRICT NAME: {el.DISTRICT_NAME} </div>
           <div>COUNTY NAME: {el.COUNTY_NAME} </div>
-          <div>LAYMAN DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
+          <div>DESCRIPTION: {el.LAYMAN_DESCRIPTION1} </div>
           <div>TYPE OF WORK: {el.TYPE_OF_WORK} </div>
           <div>PROJ CLASS: {el.PROJ_CLASS} </div>
           <div>
