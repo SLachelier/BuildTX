@@ -5,7 +5,7 @@ import * as BsIcons from "react-icons/bs";
 function Products() {
   return (
     // <div className="fetched">
-    <div>
+    <div className="intro">
       <h1 className="team">Luis Garcia</h1>
       <br></br>
       <h1>
