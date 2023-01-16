@@ -20,11 +20,10 @@
 }
 
 .intro {
-  background-color: lightgrey;
   margin: auto;
-  width: 65vw;
+  width: 100vw;
   padding: 100px;
-  height: 100vh;
+  height: 100%;
 }
 
 /* Navbar CSS */
@@ -58,6 +57,7 @@
 .nav-menu.active {
   left: 0;
   transition: 450ms;
+  background-color: navy;
 }
 
 .nav-text {
@@ -71,7 +71,7 @@
 
 .nav-text a {
   text-decoration: none;
-  color: #151414;
+  color: #fff;
   font-size: 18px;
   width: 95%;
   height: 100%;
@@ -91,7 +91,7 @@
 }
 
 .navbar-toggle {
-  background-color: navy;
+  background-color: rgba(2, 1, 1, 0);
   width: 100%;
   height: 80px;
   display: flex;
@@ -106,12 +106,12 @@ span {
 .fetched {
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: center;
   margin: auto;
   width: 65%;
   padding-top: 50px;
   padding-bottom: 20px;
-  background-color: lightgrey;
+  height: 100vh;
 }
 
 .typeList, select {
@@ -139,19 +139,58 @@ span {
   width: 100%;
 }
 
+.csj-search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:min-content;
+  position: absolute;
+}
+
+input {
+  width: 200px;
+  background-color: lightgray;
+}
+
 .innerHome{
   justify-content: center;
   align-items: center;
   padding-bottom: 50px;
 }
 
-
 .csj{
   /* outline is just here to see how big the div is, erase when satisfied */
   /* outline: solid black; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 15px;
+  color: navy;
+  background-color: gray;
+  box-shadow: 5px 4px 16px black;
   padding: 25px 5px 10px 50px;
+  margin: 10px;
   max-width: 300px;
+  width:325px;
+  height: 285px;
+  font-weight: 600;
 }
+.csj:hover {
+  box-shadow: -1px -1px 20px black;
+  color: black;
+  background-color: lightgrey;
+  transition: .5s ease-in-out;
+}
+
+.csj a {
+  color: black;
+}
+
+.csj a:hover {
+  transition: .5s ease-in-out;
+  color: navy;
+}
+
 
 .title{
   /* margin-left: 40%; */

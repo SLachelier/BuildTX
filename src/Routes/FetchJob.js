@@ -97,7 +97,7 @@ function FetchJob() {
   return (
     <div className="fetched">
       <form className="inner-dist">
-        <h3>
+        <h3 className="csj-search">
           CSJ:
           <input
             list="months"
