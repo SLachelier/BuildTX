@@ -12,7 +12,7 @@ function FetchJob() {
     // fetches from TxDOT database
     axios
       .get(
-        `https://services.arcgis.com/KTcxiTD9dsQw4r7Z/ArcGIS/rest/services/TxDOT_Projects/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelWithin&resultType=none&distance=0.0&units=esriSRUnit_Foot&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token=&CONTROL_SECT_JOB=Bastrop`
+        `https://services.arcgis.com/KTcxiTD9dsQw4r7Z/ArcGIS/rest/services/TxDOT_Projects/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelWithin&resultType=none&distance=0.0&units=esriSRUnit_Foot&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token=`
       )
       .then((res) => {
         // filters and pushes items into an empty array based off the year, county name, and phase condition.
@@ -29,6 +29,22 @@ function FetchJob() {
             const elements = test.join("");
             // adds the rewritten CSJ number as a new property into the object.
             res.data.features[i].properties.CSJ = elements;
+
+            if(res.data.features[i].geometry === null){
+              let X= "N/A"
+              res.data.features[i].properties.x_Coordinate= X;
+              let Y= "N/A"
+              res.data.features[i].properties.y_Coordinate= Y;
+              res.data.features[i].properties.location= "N/A";
+              
+            }else{
+              let X = JSON.stringify(res.data.features[i].geometry.coordinates[0][1])
+              res.data.features[i].properties.x_Coordinate= X;
+              let Y = JSON.stringify(res.data.features[i].geometry.coordinates[0][0])
+              res.data.features[i].properties.y_Coordinate= Y;
+              res.data.features[i].properties.location=res.data.features[i].properties.LIMITS_FROM ;
+              
+            }
 
             // adds a "month in letters" as a propery into the object. Based off what the numerical month is it will add the appropiate written out month.
             switch (res.data.features[i].properties.NBR_LET_MONTH) {
@@ -129,6 +145,17 @@ function FetchJob() {
           >
             PDF
           </a>
+          <div>
+          LOCATION: 
+           <a
+            href={`https://www.google.com/maps/@${el.x_Coordinate},${el.y_Coordinate},15z`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {el.location} 
+          </a> 
+           
+          </div>
         </div>
       ))}
     </div>
