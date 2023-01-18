@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 function FetchDistrict() {
   // lists out useState variables
   const [posts, setPosts] = useState([]);
   const [Year, setYear] = useState();
   const [Month, setMonth] = useState();
   const [District, setDistrict] = useState();
-  
 
   useEffect(() => {
     const jobs = [];
@@ -16,7 +14,7 @@ function FetchDistrict() {
     // fetches from TxDOT database
     axios
       .get(
-        `https://services.arcgis.com/KTcxiTD9dsQw4r7Z/ArcGIS/rest/services/TxDOT_Projects/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelWithin&resultType=none&distance=0.0&units=esriSRUnit_Foot&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token=&CONTROL_SECT_JOB=Bastrop`
+        `https://services.arcgis.com/KTcxiTD9dsQw4r7Z/ArcGIS/rest/services/TxDOT_Projects/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelWithin&resultType=none&distance=0.0&units=esriSRUnit_Foot&relationParam=&returnGeodetic=true&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token=`
       )
       .then((res) => {
         // filters and pushes items into an empty array based off the year, county name, and phase condition.
@@ -27,8 +25,8 @@ function FetchDistrict() {
               "Construction underway or begins soon" &&
             res.data.features[i].properties.DISTRICT_NAME === District &&
             res.data.features[i].properties.NBR_LET_YEAR === parseInt(Year) &&
-            res.data.features[i].properties.NBR_LET_MONTH === parseInt(Month) &&
-            res.data.features[i].properties.HIGHWAY_NUMBER !== "VA"
+            res.data.features[i].properties.NBR_LET_MONTH === parseInt(Month)
+            
           ) {
             // pushes if condition into the empty array
             jobs.push(res.data.features[i].properties);
@@ -39,9 +37,31 @@ function FetchDistrict() {
             test.splice(4, 0, "-");
             test.splice(7, 0, "-");
 
+            // console.log(boop[0][0])
             const elements = test.join("");
             // adds the rewritten CSJ number as a new property into the object.
+            // console.log(res.data.features[i].properties.CONTROL_SECT_JOB)
+            // console.table(res.data.features[i].geometry.coordinates[0])
+            
             res.data.features[i].properties.CSJ = elements;
+            
+            
+            if(res.data.features[i].geometry === null){
+              let X= "N/A"
+              res.data.features[i].properties.x_Coordinate= X;
+              let Y= "N/A"
+              res.data.features[i].properties.y_Coordinate= Y;
+              res.data.features[i].properties.location= "N/A";
+              
+            }else{
+              let X = JSON.stringify(res.data.features[i].geometry.coordinates[0][1])
+              res.data.features[i].properties.x_Coordinate= X;
+              let Y = JSON.stringify(res.data.features[i].geometry.coordinates[0][0])
+              res.data.features[i].properties.y_Coordinate= Y;
+              res.data.features[i].properties.location=res.data.features[i].properties.LIMITS_FROM ;
+              
+            }
+            
 
             // adds a "month in letters" as a propery into the object. Based off what the numerical month is it will add the appropiate written out month.
             switch (Month) {
@@ -100,7 +120,7 @@ function FetchDistrict() {
         }
 
         console.log(jobs);
-         // adds the newly filled out array into the useState variable
+        // adds the newly filled out array into the useState variable
         setPosts(jobs);
       })
       .catch((err) => {
@@ -109,7 +129,6 @@ function FetchDistrict() {
   }, [posts, District, Month, Year]);
 
   return (
-
     // html for the input
     <div className="fetched">
       <div>
@@ -124,7 +143,7 @@ function FetchDistrict() {
               placeholder={"District Name "}
             ></input>
           </h3>
-          
+
           <h3>
             Month:
             <input
@@ -202,13 +221,24 @@ function FetchDistrict() {
             Date of Construction: {el.Month}/{el.NBR_LET_YEAR}
           </div>
           <a
-
             href={`https://planuser:txdotplans@ftp.txdot.gov/plans/State-Let-Construction/${el.NBR_LET_YEAR}/0${el.NBR_LET_MONTH}%20${el.Month}/0${el.NBR_LET_MONTH}%20Plans/${el.COUNTY_NAME}%20${el.CSJ}.pdf`}
             target="_blank"
             rel="noopener noreferrer"
           >
             PDF
           </a>
+          <div>
+          LOCATION: 
+           <a
+            href={`https://www.google.com/maps/@${el.x_Coordinate},${el.y_Coordinate},15z`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {el.location}
+          </a> 
+          
+          </div>
+          
         </div>
       ))}
     </div>
