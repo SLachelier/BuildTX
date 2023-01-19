@@ -146,7 +146,7 @@ function FetchJob() {
             PDF
           </a>
           <div>
-          LOCATION: 
+          LOCATION:  
            <a
             href={`https://www.google.com/maps/@${el.x_Coordinate},${el.y_Coordinate},15z`}
             target="_blank"
