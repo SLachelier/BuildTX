@@ -114,6 +114,10 @@ span {
   height: 100vh;
 }
 
+.fetchedJob {
+  height: 75vh;
+}
+
 .typeList, select {
   padding: 0.5rem 20px ;
   margin: 8px 0 8px 10px;
@@ -134,16 +138,8 @@ span {
   flex-wrap: wrap;
   display: flex;
   justify-content: space-evenly;
-  padding: 0% 10% 10% 5%;
+  padding: 0% 10% 1% 5%;
   width: 100vw;
-}
-
-.csj-search {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: min-content;
-  position: absolute;
 }
 
 input {
@@ -166,12 +162,13 @@ input {
   color: navy;
   background-color: lightgray;
   box-shadow: 5px 4px 16px black;
-  padding: 5px 20px 25px 50px;
+  padding: 20px 20px 25px 50px;
   margin: 10px 20px;
-  max-width: 375px;
-  width: 365px;
-  max-height: 350px;
-  height: 60%;
+  max-width: 350px;
+  width: max-content;
+  height: max-content;
+  min-height: 250px;
+  min-width: 250px;
   font-weight: 600;
 }
 .csj:hover {
@@ -217,4 +214,16 @@ input {
     align-items: center;
     margin: 20px;
   }
+}
+
+@media (max-width: 550px) {
+  nav-menu {
+    width: 100%;
+  }
+  .intro {
+    width: 100vw;
+    padding: 60px;
+    height: 100%;
+  }
+
 }

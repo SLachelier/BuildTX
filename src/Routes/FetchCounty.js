@@ -119,7 +119,7 @@ function FetchCounty() {
       .catch((err) => {
         console.log(err);
       });
-  }, [posts, County, Year]);
+  });
 
   return (
 
