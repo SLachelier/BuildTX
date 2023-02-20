@@ -12,7 +12,7 @@ SASS
 
 
 # Screenshot of application
-![Image of app](liveApp.PNG)
+![Image of app](https://i.gyazo.com/6bf419e669b6237055761dcf5122c4e4.jpg)
 
 # Link to application Repository
 https://github.com/garcia2697/skirt-skirt
@@ -31,4 +31,9 @@ Luis Garcia
 GitHub: garcia2697
 Email: lougarcia2697@gmail.com
 LinkedIn: https://www.linkedin.com/in/luis-g-garcia-/
+
+Shauna Lachelier
+GitHub: SLachelier
+Email: SLachelier@gmail.com
+LinkedIn: https://www.linkedin.com/in/SLachelier/
 
